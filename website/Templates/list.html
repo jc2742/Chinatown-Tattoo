@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {%block content%}
+<div class="container">
+  <div class="row">
+    <h2>Artists</h2>
+  </div>
+  <div class="row" style="justify-content: space-around">
+    {%for artist in artist_list%}
+    <div class="card" style="width: 25rem; margin: 1rem">
+      <div class="pfp"><img
+        src="/{{artist.profile}}"
+        class="card-img-top img-fluid"
+        alt="Artist does not have a picture"
+         style="width: 15rem; height:18rem"
+      /></div>
+      <h4>{{artist.name}}</h4>
+      <p>
+        <div>Email: {{artist.mail}}</div><div>Phone Number: {{artist.mobile}}</div><div>Artist Info: {{artist.about}}</div>
+        <a class="btn button" href="/times/{{artist.id}}/">
+          Make Appointment
+        </a>
+        <a class="btn button" href="{{artist.id}}/"> View Artist </a>
+        {% if user.is_staff%}
+
+        <a class="btn button" href="{{artist.id}}/edit"> Edit Artist </a>
+        <a class="btn button" href="{{artist.id}}/delete"> Remove Artist </a>
+        {%endif%}
+      </p>
+    </div>
+    {% endfor %} {% if user.is_staff%}
+    <a class="btn button" href="create"> Creat new Artist </a>
+
+    {%endif%}
+  </div>
+</div>
+{% endblock %}

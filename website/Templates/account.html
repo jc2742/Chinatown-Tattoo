@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {%block content%}
+<div class="container">
+  <h2 class="text-center" style="font-weight:bolder;">Artist</h2>
+  <div class="row justify-content-center">
+      {% if image %} <img class="col-4" src="{{image.url}}" style="width: 20rem; height:25rem;"/> {%endif%}
+  <div class="col-4 card align-self-center" style="width:35rem;height:20rem;">
+<h2>{{name}}</h4>
+  <p>Phone Number: {{mobile}}</p>
+  <p>Email: {{mail}}</p>
+  <p>About: {{about}}</p>
+  {%if user.is_staff%}
+  <a href='portfolio/' class="button btn">Add to Portfolio</a href='/portfolio'>
+  {%endif%}
+</div>
+</div>
+<div class="container card"> 
+  <div class="row"><h1>{{name}}'s Portfolio</h1></div>
+  <div class="row">
+  {%for image in portfolio%}
+   {% if image %}<a class="col-3 image"   style="width:25rem;" href="{{image.image.url}}"><img src="{{image.image.url}}"  style="width:25rem; height:40rem;"/>{%endif%}
+  {%endfor%}
+  </div>
+</div>
+</div>
+<div>
+
+</div>
+{%endblock%}

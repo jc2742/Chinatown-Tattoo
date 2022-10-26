@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {%block content%}
+<div class="container text-center">
+<h2 class="center-text" style="margin:.5rem;">Please select the time you want for your appointment</h2> </div>
+<div class="container" style="justify-content: space-around">
+  <div class="row">
+  <div class="col-6" style="margin:2rem;" >
+    {%for time in times%}
+    <a style="margin:.5rem;"class="button btn" href="{{time.0}}/{{time.1}}/">
+      {%if time.0 > 12%}{{time.2}}{%endif%} {%if time.0 < 13%}
+      {{time.0}}{%endif%} : {{time.1}} {%if time.1 == 0%}0{%endif%} 
+      {%if time.0 > 12%} PM{%endif%}{%if time.0 < 13%}AM{%endif%}
+    </a>
+    {%endfor%}
+  </div>
+   </div>
+</div>
+{%endblock%}

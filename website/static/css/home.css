@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Poppins";
+  text-align: center;
+}
+
+body {
+  background: black;
+}
+
+h1 {
+  position: relative;
+  margin: 10px;
+  font-size: 700%;
+  top: 150px;
+  color: white;
+  animation: fadeIn 3s;
+}
+
+#container {
+  top: 150px;
+  position: relative;
+  padding: 100px;
+  white-space: normal;
+}
+
+a {
+  font-size: 200%;
+  margin: 5px;
+  font-weight: bold;
+  padding: 10px 25px;
+  text-decoration: none;
+  color: white;
+  border: 5px white solid;
+  background-color: transparent;
+  animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+a:hover {
+  background-color: rgba(50, 50, 50, 0.5);
+}
+
+#cover {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+}
+img {
+  z-index: -1;
+  object-fit: cover;
+  position: absolute;
+
+  top: 5%;
+  left: 2.5%;
+  width: 95%;
+  height: 90%;
+  animation: fadeIn 3s;
+}
