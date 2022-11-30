@@ -21,13 +21,13 @@
         <a class="btn button" href="{{artist.id}}/"> View Artist </a>
         {% if user.is_staff%}
 
-        <a class="btn button" href="{{artist.id}}/edit"> Edit Artist </a>
-        <a class="btn button" href="{{artist.id}}/delete"> Remove Artist </a>
+        <a class="btn button" href="{{artist.id}}/edit/"> Edit Artist </a>
+        <a class="btn button" href="{{artist.id}}/delete/"> Remove Artist </a>
         {%endif%}
       </p>
     </div>
     {% endfor %} {% if user.is_staff%}
-    <a class="btn button" href="create"> Creat new Artist </a>
+    <a class="btn button" href="create/"> Creat new Artist </a>
 
     {%endif%}
   </div>

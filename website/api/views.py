@@ -24,9 +24,9 @@ User = get_user_model()
 def home_view(request, *args, **kawrgs):
     return render(request, "home.html", {})
 
-
 def info_view(request, *args, **kawrgs):
     return render(request, "info.html", {})
+
 @login_required
 def artist_create_view(request, *args, **kwargs):
     form = ArtistForm(request.POST, request.FILES or None)
