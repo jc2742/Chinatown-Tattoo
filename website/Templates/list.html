@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {%block content%}
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
     <h2>Artists</h2>
   </div>
   <div class="row" style="justify-content: space-around">
@@ -12,6 +12,9 @@
         alt="Artist does not have a picture"
          style="width: 15rem; height:18rem"
       /></div>
+      <div class="line">
+          _______________________________
+      </div>
       <h4>{{artist.name}}</h4>
       <p>
         <div>Email: {{artist.mail}}</div><div>Phone Number: {{artist.mobile}}</div><div>Artist Info: {{artist.about}}</div>

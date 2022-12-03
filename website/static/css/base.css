@@ -29,6 +29,11 @@ h1 {
 .card {
   align-items: center !important;
 }
+.line{
+  font-weight: 100;
+}
+
+
 .container-sm {
   position: relative;
 }

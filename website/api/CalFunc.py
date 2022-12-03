@@ -1,13 +1,15 @@
 from .Google import Create_Service, convert_to_RFC_datetime
 
-
-def makeAppointment(year, month, date, hour, min, email, name, phone, json):
+def makeService(json):
     CLIENT_SECRET_FILE = f'media/{json}'
     API_NAME = 'Appointment Sys'
     API_VERSION = 'v3'
     SCOPES = ['https://www.googleapis.com/auth/calendar',
               'https://www.googleapis.com/auth/calendar.events']
-    service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
+    return Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
+
+def makeAppointment(year, month, date, hour, min, email, name, phone, json):
+    service = makeService(json)
     timeOffset = 4
     Ehour = hour
     Emin = 30
@@ -47,12 +49,7 @@ def makeAppointment(year, month, date, hour, min, email, name, phone, json):
 
 
 def returnTimes(year, month, date, json):
-    CLIENT_SECRET_FILE = f'media/{json}'
-    API_NAME = 'Appointment Sys'
-    API_VERSION = 'v3'
-    SCOPES = ['https://www.googleapis.com/auth/calendar',
-              'https://www.googleapis.com/auth/calendar.events']
-    service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
+    service = makeService(json)
     timeOffset = 4
     hours = []
     minutes = []
