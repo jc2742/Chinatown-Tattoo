@@ -3,7 +3,7 @@ backports.zoneinfo==0.2.1
 cachetools==5.2.0
 certifi==2022.9.24
 charset-normalizer==2.1.1
-Django==4.1
+Django==4.1.2
 djangorestframework==3.13.1
 google-auth==2.14.1
 google-auth-oauthlib==0.7.1
