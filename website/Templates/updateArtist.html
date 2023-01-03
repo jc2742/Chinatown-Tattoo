@@ -4,13 +4,14 @@
   <div class="row">
 <div class="col-md-6">
 <form method="post" action="" enctype="multipart/form-data">
+  <h2 class="text-center">{{title}}</h2>
   {% csrf_token %} {% for field in form %}
     <div class="fieldWrapper mb-3">
       {{ field.label_tag }} {{ field }}{{ field.errors }}
     </div>
     {% endfor %}
   <button type="submit button" class="button btn btn-info btn-primaray">
-      Send Data
+      Submit
     </button>
 
   </form>

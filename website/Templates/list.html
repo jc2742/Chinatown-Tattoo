@@ -5,29 +5,26 @@
   </div>
   <div class="row" style="justify-content: space-around">
     {%for artist in artist_list%}
-    <div class="card" style="width: 25rem; margin: 1rem">
-      <div class="pfp"><img
+
+      <div class="pic-cont col-6"><center><img class="pfp"
         src="/{{artist.profile}}"
-        class="card-img-top img-fluid"
-        alt="Artist does not have a picture"
-         style="width: 15rem; height:18rem"
-      /></div>
-      <div class="line">
-          _______________________________
-      </div>
+        alt="No image found"
+      /></center></div>
+      <div class="card-info col-6">
       <h4>{{artist.name}}</h4>
-      <p>
-        <div>Email: {{artist.mail}}</div><div>Phone Number: {{artist.mobile}}</div><div>Artist Info: {{artist.about}}</div>
+
+        <div class="info"><b>Email:</b> {{artist.mail}}</div><div class="info"><b>Phone Number:</b> {{artist.mobile}}</div><div class="info"><b>About Me:</b> {{artist.about}}</div>
         <a class="btn button" href="/times/{{artist.id}}/">
-          Make Appointment
+          Schedule Me!
         </a>
-        <a class="btn button" href="{{artist.id}}/"> View Artist </a>
+        <a class="btn button" href="{{artist.id}}/"> View {{artist.name}}'s Portfolio </a>
         {% if user.is_staff%}
 
-        <a class="btn button" href="{{artist.id}}/edit/"> Edit Artist </a>
-        <a class="btn button" href="{{artist.id}}/delete/"> Remove Artist </a>
+        <a class="btn button" href="{{artist.id}}/edit/"> Edit {{artist.name}} </a>
+        <a class="btn button" href="{{artist.id}}/delete/"> Remove {{artist.name}} </a>
         {%endif%}
-      </p>
+      
+
     </div>
     {% endfor %} {% if user.is_staff%}
     <a class="btn button" href="create/"> Creat new Artist </a>

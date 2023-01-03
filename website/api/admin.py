@@ -6,18 +6,25 @@ from .forms import UserAdminChangeForm, UserAdminCreationForm
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-# Register your models here.
+
+# Registering models here.
 User = get_user_model()
 
 
 class AppointmentAdmin(admin.ModelAdmin):
+    """
+    Creates AppointmentAdmin model
+    """
     search_fields = ['name']
 
     class Meta:
         model = Appointment
 
-
+#Creating Custom User Models
 class UserAdmin(BaseUserAdmin):
+    """
+    Creates a Custom UserAdmin Model
+    """
     # The forms to add and change user instances
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
@@ -46,8 +53,8 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 
+#Registering models to admin server
 admin.site.unregister(Group)
-
 admin.site.register(Artist)
 admin.site.register(Appointment, AppointmentAdmin)
 admin.site.register(User, UserAdmin)

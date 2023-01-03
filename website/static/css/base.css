@@ -1,17 +1,114 @@
 * {
   justify-content: center;
   font-family: "Poppins";
+  margin: 0;
+  z-index: 1;
 }
+/* HOME */
+.home-container{
+  height: 81vh;
+  background-color: black;
+  display: flex;
+}
+.image-cont{
+  overflow:hidden;
+  width: 33.33%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-img{
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.4s ease;
+  transform-origin: 50% 50%;
+}
+
+.home-img:hover{
+  transform:scale(1.2);
+}
+
+@media screen and (max-width:1500px) {
+  .home-container{
+    padding: 0;
+    width: 100%;
+    display:contents;
+  }
+  .image-cont{
+    width: 100%;
+    overflow:hidden;
+    object-fit: cover;
+  }
+
+
+}
+
+.copyright{
+  text-decoration: none;
+  color: white;
+}
+
+/* NAV BAR */
+
+h1 {
+  font-weight: bold;
+  text-align: center;
+}
+
+.navbar{
+  background-color: rgb(255,255,255)!important;
+}
+.navbar-collapse{
+  justify-content: right;
+}
+
+
+.title{
+  font-size: 2rem;
+  padding-top:0.5rem;
+}
+
+.nav-link{
+  font-weight: 500;
+  font-size:medium;
+}
+
+/* INFO PAGE */
+h2{
+  text-align: left !important;
+  font-size: 1.75rem;
+  font-weight: 600;
+  text-decoration: underline rgb(195, 195, 195);
+  text-underline-offset: 1rem;
+  padding-bottom: 1rem;
+}
+
+h4{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+p{
+  font-size: 1rem;
+  font-weight: 350;
+}
+
+
+/* FORMS AND BUTTONS */
 
 form {
   margin: 3rem;
   padding: 1em;
   border: 0;
   text-align: center;
-  background: bisque;
-  border: 1px black solid;
+  background: white;
   position: relative;
+  color: #1E1A1D;
 }
+.input{
+  width: 100%;
+}
+
 button,
 .button {
   border: 1px solid black !important;
@@ -22,17 +119,13 @@ button,
   background-color: rgba(50, 50, 50, 0.25) !important;
 }
 
-h1 {
-  font-weight: bold;
-  text-align: center;
+/* ARTIST LIST AND CARDS */
+.info{
+  margin:1rem;
 }
-.card {
-  align-items: center !important;
+.card-info{
+padding: 2rem;
 }
-.line{
-  font-weight: 100;
-}
-
 
 .container-sm {
   position: relative;
@@ -48,7 +141,7 @@ img {
   opacity: 70%;
 }
 
-.errorlist {
+ .errorlist {
   list-style: none;
   display: inline-table;
   font-size: 0.75em;
@@ -57,20 +150,54 @@ img {
 textarea {
   height: 3em;
   width: 80%;
-}
+} 
+/* CONTENT PAGE */
 
 #pageContainer {
   position: relative;
   min-height: 83vh;
+  background-color: white;
+  padding-top:2rem;
 }
 
 #contentWrap {
   padding-bottom: 6.5rem;
 }
+
+
+/* ARTIST LIST PAGE */
+.pic-cont{
+  display: inline-block;
+  margin: 1rem;
+  height: 20rem;
+  width: 20rem;
+  border: solid rgb(204, 204, 204);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.pfp{
+  border-radius: 50%;
+  height: 20rem;
+  width: 20rem;
+  object-fit: cover;
+  line-height: 17rem;
+  text-align: center;
+}
+
+/* FOOTER PAGE */
+
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0%;
   height: 6.5rem;
   width: 100%;
-  background-color: #f1f1f1;
+  background-color: black;
+}
+
+/* ERROR PAGE */
+
+.error-message{
+  align-content: center;
 }

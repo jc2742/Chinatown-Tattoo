@@ -12,6 +12,9 @@ User = get_user_model()
 
 
 class RegisterForm(forms.Form):
+    """
+    Creates a form to register users.
+    """
     email = forms.EmailField()
     fullname = forms.CharField()
     password1 = forms.CharField(
@@ -34,6 +37,9 @@ class RegisterForm(forms.Form):
     )
 
     def clean_email(self):
+        """
+        Checks if email is already used and returns email if valid, else raises an Error.
+        """
         email = self.cleaned_data.get("email")
         qs = User.objects.filter(email=email)
         if qs.exists():
@@ -42,6 +48,9 @@ class RegisterForm(forms.Form):
         return(email)
 
     def clean_password2(self):
+        """
+        Checks if the two passwords are the same and greater than 8 characters. Throws error if it isnt.
+        """
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if len(password1) <= 8:
@@ -52,6 +61,9 @@ class RegisterForm(forms.Form):
 
 
 class LoginForm(forms.Form):
+    """
+    Creates a form to allow user logins
+    """
     email = forms.EmailField()
     password = forms.CharField(
         widget=forms.PasswordInput(
@@ -61,11 +73,10 @@ class LoginForm(forms.Form):
         )
     )
 
-    # def clean(self):
-    #username = self.cleaned_data_get("username")
-    #password = self.cleaned_data_get("password")
-
     def clean_email(self):
+        """
+        Checks if email is in database, if not raises error
+        """
         email = self.cleaned_data.get("email")
 
         qs = User.objects.filter(email=email)
@@ -75,7 +86,11 @@ class LoginForm(forms.Form):
         return(email)
 
 
+
 class ArtistForm(forms.ModelForm):
+    """
+    Creates a form to register artists
+    """
     class Meta:
         model = Artist
         fields = [
@@ -88,13 +103,19 @@ class ArtistForm(forms.ModelForm):
         ]
 
     def clean_mobile(self):
+        """
+        Checks if the phone number is at least 9 digits. Throws an error if not.
+        """
         data = self.cleaned_data.get('mobile')
-        if len(data) < 9:
+        if len(data) < 10:
             raise forms.ValidationError("This is too short")
         return data
 
 
 class ArtistEditForm(forms.ModelForm):
+    """
+    Creates an form for artist to edit their profile
+    """
     class Meta:
         model = Artist
         fields = [
@@ -105,6 +126,10 @@ class ArtistEditForm(forms.ModelForm):
         ]
 
     def save(self, user=None):
+        """
+        Saves information given in ArtistEditForm into the given user. If user is none, 
+        no information is saved.
+        """
         user_profile = super(ArtistForm, self).save(commit=False)
         if user:
             user_profile.user = user
@@ -112,6 +137,9 @@ class ArtistEditForm(forms.ModelForm):
         return user_profile
 
     def clean_mobile(self):
+        """
+        Checks if the phone number is at least 9 digits. Throws an error if not.
+        """
         data = self.cleaned_data.get('mobile')
         if len(data) < 10:
             raise forms.ValidationError("This is too short")
@@ -119,14 +147,23 @@ class ArtistEditForm(forms.ModelForm):
 
 
 class DateInput(forms.DateInput):
+    """
+    Creates an object to store customer appointment date
+    """
     input_type = 'date'
 
 
 class TimeInput(forms.TimeInput):
+    """
+    Creates an object to store customer appointment time
+    """
     input_type = 'time'
 
 
 class TimeForm(forms.ModelForm):
+    """
+    Creates a form for customers to choose their appointment time
+    """
     class Meta:
         model = GetTimes
         fields = [
@@ -138,6 +175,9 @@ class TimeForm(forms.ModelForm):
 
 
 class AppointmentForm(forms.ModelForm):
+    """
+    Creates a form for customers to put in personal information for their appointments
+    """
     class Meta:
         model = Appointment
         fields = [
@@ -147,6 +187,9 @@ class AppointmentForm(forms.ModelForm):
         ]
 
 class PortfolioForm(forms.ModelForm):
+    """
+    Creates a form for users to add pictures to their portfolio
+    """
     class Meta:
         model = Portfolio
         fields = [
@@ -168,9 +211,9 @@ class UserAdminCreationForm(forms.ModelForm):
         fields = ['email', 'full_name']
 
     def clean(self):
-        '''
+        """
         Verify both passwords match.
-        '''
+        """
         cleaned_data = super().clean()
         password = cleaned_data.get("password")
         password_2 = cleaned_data.get("password_2")
@@ -179,6 +222,9 @@ class UserAdminCreationForm(forms.ModelForm):
         return cleaned_data
 
     def save(self, commit=True):
+        """
+        Saves the user password to user
+        """
         # Save the provided password in hashed format
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password"])

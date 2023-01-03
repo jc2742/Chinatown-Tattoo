@@ -33,6 +33,8 @@ from api.views import (
     make_appointment_view,
     info_view,
     addPortfolio_view,
+    artist_pic_view,
+    artist_delete_pic_view,
 )
 
 urlpatterns = [
@@ -47,6 +49,8 @@ urlpatterns = [
     path('artist/<int:pk>/edit/', artist_edit_view),
     path('artist/<int:pk>/portfolio/', addPortfolio_view),
     path('artist/<int:pk>/delete/', artist_delete_view),
+    path('artist/<int:pk>/portfolio/all/', artist_pic_view),
+    path('artist/<int:pk>/portfolio/all/<int:img_id>/', artist_delete_pic_view),
     path('times/<int:pk>/', get_times_view),
     path('times/<int:pk>/appointment/<int:id>/', select_times_view),
     path('times/<int:pk>/appointment/<int:id>/<int:hour>/<int:min>/',

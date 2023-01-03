@@ -1,28 +1,37 @@
 {% extends 'base.html' %} {%block content%}
 <div class="container">
-  <h2 class="text-center" style="font-weight:bolder;">Artist</h2>
-  <div class="row justify-content-center">
-      {% if image %} <img class="col-4" src="{{image.url}}" style="width: 20rem; height:25rem;"/> {%endif%}
-  <div class="col-4 card align-self-center" style="width:35rem;height:20rem;">
-<h2>{{name}}</h4>
-  <p>Phone Number: {{mobile}}</p>
-  <p>Email: {{mail}}</p>
-  <p>About: {{about}}</p>
-  {%if user.is_staff%}
-  <a href='portfolio/' class="button btn">Add to Portfolio</a href='/portfolio'>
-  {%endif%}
+<h2>Artist</h2>
+
+
+<div class="row" style="justify-content: space-around; padding-bottom: 2rem;">
+    <div class="pic-cont col-6"><center><img class="pfp"
+      src="/{{image}}"
+      alt="No image found"
+    /></center></div>
+    <div class="card-info col-6">
+    <h4>{{name}}</h4>
+
+      <div class="info"><b>Email:</b> {{mail}}</div><div class="info"><b>Phone Number:</b> {{mobile}}</div><div class="info"><b>About Me:</b> {{about}}</div>
+      <a class="btn button" href="/times/{{id}}/">Schedule Me!</a>
+      {% if user.is_staff%}
+      <a class="btn button" href="edit/"> Edit {{name}} </a>
+      <a class="btn button" href="delete/"> Remove {{name}} </a>
+      <a href='portfolio/' class="button btn">Add to Portfolio</a>
+      <a href = "portfolio/all/" class="button btn">Remove Image</a>
+      {%endif%}
+    
+
+  </div>
 </div>
-</div>
-<div class="container card"> 
-  <div class="row"><h1>{{name}}'s Portfolio</h1></div>
+
+
+<div class="container"> 
+  <div class="row"><h2>{{name}}'s Portfolio</h1></div>
   <div class="row">
   {%for image in portfolio%}
    {% if image %}<a class="col-3 image"   style="width:25rem;" href="{{image.image.url}}"><img src="{{image.image.url}}"  style="width:25rem; height:40rem;"/>{%endif%}
   {%endfor%}
   </div>
 </div>
-</div>
-<div>
-
 </div>
 {%endblock%}
